@@ -1,6 +1,8 @@
 package br.edu.infnet.AppBanco.controleGastos;
 
 import br.edu.infnet.AppBanco.controleGastos.model.Avulso;
+import br.edu.infnet.AppBanco.controleGastos.model.Lancamento;
+import br.edu.infnet.AppBanco.controleGastos.model.Recorrente;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -13,36 +15,34 @@ import java.util.Date;
 import java.util.List;
 
 @Component
-public class AvulsoLoader implements ApplicationRunner {
-    List<Avulso> lista = new ArrayList<>();
+public class RecorrenteLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        FileReader file = new FileReader("avulso.txt");
+        List<Recorrente> lista = new ArrayList<>();
+
+        FileReader file = new FileReader("recorrente.txt");
         BufferedReader leitura = new BufferedReader(file);
 
         String linha = leitura.readLine();
 
         String[] campos = null;
 
-        System.err.println("#avulso");
+        System.err.println("#recorrente");
 
         while (linha != null) {
             campos = linha.split(";");
 
-            Avulso ticketCinema = new Avulso(35.00, LocalDateTime.now(), false, "Sem observacao");
-            System.out.println(ticketCinema);
+            Recorrente contaTelefone = new Recorrente(Double.valueOf(campos[0]), LocalDateTime.now(), Boolean.valueOf(campos[2]), campos[3]);
+            System.out.println(contaTelefone);
 
-            Avulso consertoMicroondas = new Avulso(150.00, LocalDateTime.now(), false, "Conserto do mircroondas que não esquenta.");
+//            Recorrente aluguel = new Recorrente(850.00, new Date(), false, "Aluguel mensal.");
             linha = leitura.readLine();
 
-            lista.add(ticketCinema);
-            lista.add(consertoMicroondas);
+            lista.add(contaTelefone);
         }
-
-        for (Avulso avulso : lista) {
-            System.out.println("Entrei");
-            System.out.println(avulso);
+        for (Recorrente aluguel : lista) {
+            System.out.println(aluguel);
         }
 
         leitura.close();

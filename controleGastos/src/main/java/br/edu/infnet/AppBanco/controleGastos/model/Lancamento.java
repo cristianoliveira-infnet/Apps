@@ -1,20 +1,23 @@
 package br.edu.infnet.AppBanco.controleGastos.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Lancamento {
+public abstract class Lancamento {
     private Long id;
-    private Date dataDaTransacao;
+    private LocalDateTime dataDaTransacao;
     private String observacao;
     private boolean vencido;
     private Integer quantidadeContasPagas;
     private Integer quantidadeContasPendentes;
 
-    public Lancamento(Date dataDaTransacao, boolean vencido, String observacao) {
+    public Lancamento(LocalDateTime dataDaTransacao, boolean vencido, String observacao) {
         this.dataDaTransacao = dataDaTransacao;
         this.vencido = vencido;
         this.observacao = observacao;
     }
+
+    public Lancamento(){}
 
     public void setQuantidadeContasPagas(Integer quantidadeContasPagas) {
         this.quantidadeContasPagas = quantidadeContasPagas;
@@ -28,7 +31,7 @@ public class Lancamento {
         return id;
     }
 
-    public Date getDataDaTransacao() {
+    public LocalDateTime getDataDaTransacao() {
         return dataDaTransacao;
     }
 
@@ -46,5 +49,16 @@ public class Lancamento {
 
     public Integer getQuantidadeContasPendentes() {
         return quantidadeContasPendentes;
+    }
+
+    @Override
+    public String toString() {
+        return "Lancamento{" +
+                ", dataDaTransacao=" + dataDaTransacao +
+                ", observacao='" + observacao + '\'' +
+                ", vencido=" + vencido +
+                ", quantidadeContasPagas=" + quantidadeContasPagas +
+                ", quantidadeContasPendentes=" + quantidadeContasPendentes +
+                '}';
     }
 }
