@@ -3,7 +3,11 @@ package br.edu.infnet.AppBanco.controleGastos.model;
 import java.util.Date;
 
 public class Recorrente extends Lancamento {
-    public Recorrente(Double valorDebitado, Date dataDaTransacao, boolean vencido) {
-        super(valorDebitado, dataDaTransacao, vencido);
+    private Double valorDaContaRecorrente;
+    public Recorrente(Date dataDaTransacao, boolean vencido, String observacao, Double valorDebitado) {
+        super(dataDaTransacao, vencido, observacao);
+        this.valorDaContaRecorrente = valorDaContaRecorrente;
     }
+
+
 }

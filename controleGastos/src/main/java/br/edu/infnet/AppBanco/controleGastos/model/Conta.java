@@ -6,5 +6,7 @@ public class Conta {
     private Long id;
     private Double taxaMensal;
     private Date dataCriacao;
+    private Double valorDebitado;
+    private Double valorCreditado;
 
 }

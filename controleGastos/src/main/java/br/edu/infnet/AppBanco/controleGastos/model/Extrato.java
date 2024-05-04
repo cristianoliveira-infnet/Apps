@@ -8,7 +8,26 @@ public class Extrato {
     private Double saques;
     private Double transferencias;
     private Date data;
-    private boolean usouChequeEspecial;
+
+    public Conta getConta() {
+        return conta;
+    }
+
+    public Double getDeposito() {
+        return deposito;
+    }
+
+    public Double getSaques() {
+        return saques;
+    }
+
+    public Double getTransferencias() {
+        return transferencias;
+    }
+
+    public Date getData() {
+        return data;
+    }
 
 
 }

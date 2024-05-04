@@ -1,10 +1,20 @@
 package br.edu.infnet.AppBanco.controleGastos.model;
 
-import java.time.Duration;
 import java.util.Date;
 
 public class Avulso extends Lancamento {
-    public Avulso(Double valorDebitado, Date dataTransacao, boolean vencido) {
-        super(valorDebitado, dataTransacao, vencido);
+    private Double valorDaContaAvulsa;
+    public Avulso(Double valorDaContaAvulsa, Date dataTransacao, boolean vencido, String observacao) {
+        super(dataTransacao, vencido, observacao);
+        this.valorDaContaAvulsa = valorDaContaAvulsa;
+    }
+
+    @Override
+    public String toString() {
+        return "Conta avulsa:" +
+                "Valor da Conta Avulsa=" + valorDaContaAvulsa +
+                "\nData da Transação: "+ super.getDataDaTransacao()+
+                "\nEsta vencida: " +super.isVencido()+
+                "\nObservacao: " +super.getObservacao();
     }
 }
