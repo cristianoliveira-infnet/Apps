@@ -30,18 +30,14 @@ public class AvulsoLoader implements ApplicationRunner {
         while (linha != null) {
             campos = linha.split(";");
 
-            Avulso ticketCinema = new Avulso(35.00, LocalDateTime.now(), false, "Sem observacao");
-            System.out.println(ticketCinema);
+            Avulso avulso = new Avulso(Double.valueOf(campos[0]),LocalDateTime.now(), Boolean.valueOf(campos[2]), campos[3]);
+            System.out.println(avulso);
 
-            Avulso consertoMicroondas = new Avulso(150.00, LocalDateTime.now(), false, "Conserto do mircroondas que não esquenta.");
-            linha = leitura.readLine();
-
-            lista.add(ticketCinema);
-            lista.add(consertoMicroondas);
+            lista.add(avulso);
         }
 
         for (Avulso avulso : lista) {
-            System.out.println("Entrei");
+            System.out.println("Conta avulsa");
             System.out.println(avulso);
         }
 

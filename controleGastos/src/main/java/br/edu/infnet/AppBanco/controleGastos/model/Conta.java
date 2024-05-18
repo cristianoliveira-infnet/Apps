@@ -2,14 +2,26 @@ package br.edu.infnet.AppBanco.controleGastos.model;
 
 import java.util.Date;
 
-public class Conta {
-    private Long id;
+public class Conta extends Lancamento {
+    private Integer id;
     private Double saldo;
     private Double taxaMensal;
     private Date dataCriacao;
     private Integer quantidadeDepositos;
     private Integer quantidadeTransferencias;
     private Integer quantidadeSaque;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Double getTaxaMensal() {
+        return taxaMensal;
+    }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
 
 
     public Double deposito(Double valor) {
@@ -35,5 +47,18 @@ public class Conta {
 
     public Double getSaldo() {
         return saldo;
+    }
+
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "id=" + id +
+                ", saldo=" + saldo +
+                ", taxaMensal=" + taxaMensal +
+                ", dataCriacao=" + dataCriacao +
+                ", quantidadeDepositos=" + quantidadeDepositos +
+                ", quantidadeTransferencias=" + quantidadeTransferencias +
+                ", quantidadeSaque=" + quantidadeSaque +
+                '}';
     }
 }

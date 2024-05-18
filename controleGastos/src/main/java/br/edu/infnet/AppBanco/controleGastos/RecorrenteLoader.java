@@ -36,7 +36,6 @@ public class RecorrenteLoader implements ApplicationRunner {
             Recorrente contaTelefone = new Recorrente(Double.valueOf(campos[0]), LocalDateTime.now(), Boolean.valueOf(campos[2]), campos[3]);
             System.out.println(contaTelefone);
 
-//            Recorrente aluguel = new Recorrente(850.00, new Date(), false, "Aluguel mensal.");
             linha = leitura.readLine();
 
             lista.add(contaTelefone);

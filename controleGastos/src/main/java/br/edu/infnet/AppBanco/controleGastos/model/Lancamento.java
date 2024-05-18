@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public abstract class Lancamento {
-    private Long id;
+    private Integer id;
     private LocalDateTime dataDaTransacao;
     private String observacao;
     private boolean vencido;
@@ -27,7 +27,7 @@ public abstract class Lancamento {
         this.quantidadeContasPendentes = quantidadeContasPendentes;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -37,6 +37,10 @@ public abstract class Lancamento {
 
     public String getObservacao() {
         return observacao;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public boolean isVencido() {

@@ -1,15 +1,12 @@
 package br.edu.infnet.AppBanco.controleGastos;
 
-import br.edu.infnet.AppBanco.controleGastos.model.Avulso;
 import br.edu.infnet.AppBanco.controleGastos.model.Extrato;
-import br.edu.infnet.AppBanco.controleGastos.model.Recorrente;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ExtratoLoader implements ApplicationRunner {
