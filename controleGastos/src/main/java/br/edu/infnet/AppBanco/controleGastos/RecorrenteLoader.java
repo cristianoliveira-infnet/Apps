@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -30,7 +31,7 @@ public class RecorrenteLoader implements ApplicationRunner {
         while (linha != null) {
             campos = linha.split(";");
 
-            Recorrente contaTelefone = new Recorrente(campos[0], Double.valueOf(campos[3]), LocalDateTime.now(), LocalDateTime.now(), false, campos[5]);
+            Recorrente contaTelefone = new Recorrente(campos[0], Double.valueOf(campos[3]), new Date(), new Date(), false, campos[5]);
             System.out.println(contaTelefone);
 
             linha = leitura.readLine();

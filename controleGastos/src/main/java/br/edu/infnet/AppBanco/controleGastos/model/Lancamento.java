@@ -1,20 +1,26 @@
 package br.edu.infnet.AppBanco.controleGastos.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
 public abstract class Lancamento {
     private Integer id;
     private String tituloDaConta;
-    private LocalDateTime dataVencimento;
-    private LocalDateTime dataPagamento;
+    private Double valorDaConta;
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    private Date dataVencimento;
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    private Date dataPagamento;
     private boolean estaVencido;
     private String observacao;
     private Integer quantidadeContasPagas;
     private Integer quantidadeContasPendentes;
 
-    public Lancamento(String tituloDaConta, LocalDateTime dataVencimento, LocalDateTime dataPagamento, boolean estaVencido, String observacao) {
+    public Lancamento(String tituloDaConta, Double valorDaConta, Date dataVencimento, Date dataPagamento, boolean estaVencido, String observacao) {
         this.tituloDaConta = tituloDaConta;
+        this.valorDaConta = valorDaConta;
         this.dataVencimento = dataVencimento;
         this.dataPagamento = dataPagamento;
         this.estaVencido = estaVencido;
@@ -39,11 +45,15 @@ public abstract class Lancamento {
         return tituloDaConta;
     }
 
-    public LocalDateTime getDataVencimento() {
+    public Double getValorDaConta() {
+        return valorDaConta;
+    }
+
+    public Date getDataVencimento() {
         return dataVencimento;
     }
 
-    public LocalDateTime getDataPagamento() {
+    public Date getDataPagamento() {
         return dataPagamento;
     }
 
@@ -55,8 +65,12 @@ public abstract class Lancamento {
         this.id = id;
     }
 
-    public boolean isVencido() {
-        return estaVencido;
+    public String isVencido() {
+        if (estaVencido) {
+            return "Sim";
+        } else {
+            return "Não";
+        }
     }
     public void setEstaVencido(boolean estaVencido) {
         this.estaVencido = estaVencido;
