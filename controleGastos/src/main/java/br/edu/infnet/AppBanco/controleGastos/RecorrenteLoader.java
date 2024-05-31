@@ -1,7 +1,5 @@
 package br.edu.infnet.AppBanco.controleGastos;
 
-import br.edu.infnet.AppBanco.controleGastos.model.Avulso;
-import br.edu.infnet.AppBanco.controleGastos.model.Lancamento;
 import br.edu.infnet.AppBanco.controleGastos.model.Recorrente;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -11,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -33,7 +30,7 @@ public class RecorrenteLoader implements ApplicationRunner {
         while (linha != null) {
             campos = linha.split(";");
 
-            Recorrente contaTelefone = new Recorrente(Double.valueOf(campos[0]), LocalDateTime.now(), Boolean.valueOf(campos[2]), campos[3]);
+            Recorrente contaTelefone = new Recorrente(campos[0], Double.valueOf(campos[3]), LocalDateTime.now(), LocalDateTime.now(), false, campos[5]);
             System.out.println(contaTelefone);
 
             linha = leitura.readLine();

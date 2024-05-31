@@ -18,29 +18,31 @@ public class AvulsoLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        FileReader file = new FileReader("avulso.txt");
-        BufferedReader leitura = new BufferedReader(file);
 
-        String linha = leitura.readLine();
 
-        String[] campos = null;
-
-        System.err.println("#avulso");
-
-        while (linha != null) {
-            campos = linha.split(";");
-
-            Avulso avulso = new Avulso(Double.valueOf(campos[0]),LocalDateTime.now(), Boolean.valueOf(campos[2]), campos[3]);
-            System.out.println(avulso);
-
-            lista.add(avulso);
-        }
-
-        for (Avulso avulso : lista) {
-            System.out.println("Conta avulsa");
-            System.out.println(avulso);
-        }
-
-        leitura.close();
+//        FileReader file = new FileReader("contaAvulso.txt");
+//        BufferedReader leitura = new BufferedReader(file);
+//
+//        String linha = leitura.readLine();
+//
+//        String[] campos = null;
+//
+//        System.err.println("#avulso");
+//
+//        while (linha != null) {
+//            campos = linha.split(";");
+//
+//            Avulso avulso = new Avulso(Double.valueOf(campos[0]),LocalDateTime.now(), Boolean.valueOf(campos[2]), campos[3]);
+//            System.out.println(avulso);
+//
+//            lista.add(avulso);
+//        }
+//
+//        for (Avulso avulso : lista) {
+//            System.out.println("Conta avulsa");
+//            System.out.println(avulso);
+//        }
+//
+//        leitura.close();
     }
 }

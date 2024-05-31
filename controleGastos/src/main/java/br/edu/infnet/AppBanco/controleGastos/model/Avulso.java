@@ -4,18 +4,18 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Avulso extends Lancamento {
-    private Double valorDaContaAvulsa;
-    public Avulso(Double valorDaContaAvulsa, LocalDateTime dataTransacao, boolean vencido, String observacao) {
-        super(dataTransacao, vencido, observacao);
+    private final Double valorDaContaAvulsa;
+    public Avulso(String tituloDaConta, LocalDateTime dataVencimento, LocalDateTime dataPagamento, Double valorDaContaAvulsa, boolean estaVencido, String observacao) {
+        super(tituloDaConta, dataVencimento, dataPagamento, estaVencido, observacao);
         this.valorDaContaAvulsa = valorDaContaAvulsa;
     }
-
 
     @Override
     public String toString() {
         return "Conta avulsa:" +
                 "Valor da Conta Avulsa=" + valorDaContaAvulsa +
-                "\nData da Transação: "+ super.getDataDaTransacao()+
+                "\nData da Transação: "+ super.getDataVencimento()+
+                "\nData da Transação: "+ super.getDataPagamento()+
                 "\nEsta vencida: " +super.isVencido()+
                 "\nObservacao: " +super.getObservacao();
     }

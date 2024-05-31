@@ -15,7 +15,7 @@ public class LancamentoLoader implements ApplicationRunner {
     List<Lancamento> lista = new ArrayList<>();
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        FileReader file = new FileReader("avulso.txt");
+        FileReader file = new FileReader("lancamento.txt");
         BufferedReader leitura = new BufferedReader(file);
 
         String linha = leitura.readLine();

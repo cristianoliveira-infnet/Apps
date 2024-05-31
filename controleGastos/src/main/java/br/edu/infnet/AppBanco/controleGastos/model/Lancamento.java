@@ -5,15 +5,19 @@ import java.util.Date;
 
 public abstract class Lancamento {
     private Integer id;
-    private LocalDateTime dataDaTransacao;
+    private String tituloDaConta;
+    private LocalDateTime dataVencimento;
+    private LocalDateTime dataPagamento;
+    private boolean estaVencido;
     private String observacao;
-    private boolean vencido;
     private Integer quantidadeContasPagas;
     private Integer quantidadeContasPendentes;
 
-    public Lancamento(LocalDateTime dataDaTransacao, boolean vencido, String observacao) {
-        this.dataDaTransacao = dataDaTransacao;
-        this.vencido = vencido;
+    public Lancamento(String tituloDaConta, LocalDateTime dataVencimento, LocalDateTime dataPagamento, boolean estaVencido, String observacao) {
+        this.tituloDaConta = tituloDaConta;
+        this.dataVencimento = dataVencimento;
+        this.dataPagamento = dataPagamento;
+        this.estaVencido = estaVencido;
         this.observacao = observacao;
     }
 
@@ -31,8 +35,16 @@ public abstract class Lancamento {
         return id;
     }
 
-    public LocalDateTime getDataDaTransacao() {
-        return dataDaTransacao;
+    public String getTituloDaConta() {
+        return tituloDaConta;
+    }
+
+    public LocalDateTime getDataVencimento() {
+        return dataVencimento;
+    }
+
+    public LocalDateTime getDataPagamento() {
+        return dataPagamento;
     }
 
     public String getObservacao() {
@@ -44,7 +56,10 @@ public abstract class Lancamento {
     }
 
     public boolean isVencido() {
-        return vencido;
+        return estaVencido;
+    }
+    public void setEstaVencido(boolean estaVencido) {
+        this.estaVencido = estaVencido;
     }
 
     public Integer getQuantidadeContasPagas() {
@@ -57,12 +72,12 @@ public abstract class Lancamento {
 
     @Override
     public String toString() {
-        return "Lancamento{" +
-                ", dataDaTransacao=" + dataDaTransacao +
+        return "Lancamento" +
+                "Data do vencimento:" +  dataVencimento+
+                "Data do Pagamento: "+ dataPagamento+
                 ", observacao='" + observacao + '\'' +
-                ", vencido=" + vencido +
+                ", vencido=" + estaVencido +
                 ", quantidadeContasPagas=" + quantidadeContasPagas +
-                ", quantidadeContasPendentes=" + quantidadeContasPendentes +
-                '}';
+                ", quantidadeContasPendentes=" + quantidadeContasPendentes;
     }
 }
