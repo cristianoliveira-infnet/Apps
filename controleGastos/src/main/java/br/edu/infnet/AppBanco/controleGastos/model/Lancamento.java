@@ -9,9 +9,9 @@ public abstract class Lancamento {
     private Integer id;
     private String tituloDaConta;
     private Double valorDaConta;
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataVencimento;
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataPagamento;
     private boolean estaVencido;
     private String observacao;

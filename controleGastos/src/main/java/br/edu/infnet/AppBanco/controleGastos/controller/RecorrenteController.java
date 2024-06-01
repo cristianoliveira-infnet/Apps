@@ -1,8 +1,10 @@
 package br.edu.infnet.AppBanco.controleGastos.controller;
 
 import br.edu.infnet.AppBanco.controleGastos.model.Recorrente;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,14 +35,21 @@ public class RecorrenteController {
                 false,
                 "Conta mensal"
         ));
-        System.out.println(recorrente);
-        return "redirect:/list";
+
+        return "redirect: list.html";
     }
     @GetMapping("/list")
     public ModelAndView list() {
-        ModelAndView mv = new ModelAndView("recorrentList");
+        ModelAndView mv = new ModelAndView("list");
         mv.addObject("recorrenteList", recorrenteList);
+        System.out.println("Array recorrenteList: "+recorrenteList);
         return mv;
+    }
+
+    @GetMapping("/edit/{id}")
+    public void edit(@PathVariable("id") Long id) {
+        ModelAndView mv = new ModelAndView("recorrente");
+        recorrenteList.stream().filter(recorrente -> id.equals(recorrente.getId()));
     }
 
 }
