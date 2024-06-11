@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -20,21 +20,30 @@
         </div>
         <div class="mb-3">
             <label for="inputValor" class="form-label">Valor da conta</label>
-            <input type="date" class="form-control" id="inputValor" name="valorDaContaAvulsa">
+            <input type="number" class="form-control" id="inputValor" name="valorDaContaAvulsa">
         </div>
         <div class="mb-3">
             <label for="inputDataDoVencimento" class="form-label">Data do Vencimento</label>
             <input type="date" class="form-control" id="inputDataDoVencimento" name="dataTransacao">
         </div>
         <div class="mb-3">
+            <label for="inputDataDoPagamento" class="form-label">Data do Pagamento</label>
+            <input type="date" class="form-control" id="inputDataDoPagamento" name="dataTransacao">
+        </div>
+        <div class="mb-3">
             <label for="inputObservacao" class="form-label">Observação</label>
-            <input type="password" class="form-control" id="inputObservacao">
+            <input type="text" class="form-control" id="inputObservacao">
         </div>
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="checkEstaVencido">
             <label class="form-check-label" for="checkEstaVencido">Está vencida?</label>
         </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="button" class="btn btn-danger" >
+            <a th:href="@{/}">
+                Cancelar
+            </a>
+        </button>
     </form>
 </body>
 </html>

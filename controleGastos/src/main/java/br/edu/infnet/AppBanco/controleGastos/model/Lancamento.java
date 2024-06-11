@@ -1,6 +1,7 @@
 package br.edu.infnet.AppBanco.controleGastos.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.NonNull;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -8,22 +9,24 @@ import java.util.Date;
 public abstract class Lancamento {
     private Integer id;
     private String tituloDaConta;
+    @NonNull
     private Double valorDaConta;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataVencimento;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataPagamento;
-    private boolean estaVencido;
+    @NonNull
+    private Boolean estaVencido = false;
     private String observacao;
     private Integer quantidadeContasPagas;
     private Integer quantidadeContasPendentes;
 
-    public Lancamento(String tituloDaConta, Double valorDaConta, Date dataVencimento, Date dataPagamento, boolean estaVencido, String observacao) {
+    public Lancamento(String tituloDaConta, Double valorDaConta, Date dataVencimento, Date dataPagamento, Boolean estaVencido, String observacao) {
         this.tituloDaConta = tituloDaConta;
         this.valorDaConta = valorDaConta;
         this.dataVencimento = dataVencimento;
         this.dataPagamento = dataPagamento;
-        this.estaVencido = estaVencido;
+        this.estaVencido = false;
         this.observacao = observacao;
     }
 
@@ -57,6 +60,10 @@ public abstract class Lancamento {
         return dataPagamento;
     }
 
+    public Boolean getEstaVencido() {
+        return this.estaVencido;
+    }
+
     public String getObservacao() {
         return observacao;
     }
@@ -87,11 +94,11 @@ public abstract class Lancamento {
     @Override
     public String toString() {
         return "Lancamento" +
-                "Data do vencimento:" +  dataVencimento+
-                "Data do Pagamento: "+ dataPagamento+
+                "Data do vencimento:" +  getDataVencimento()+
+                "Data do Pagamento: "+ getDataPagamento()+
                 ", observacao='" + observacao + '\'' +
                 ", vencido=" + estaVencido +
                 ", quantidadeContasPagas=" + quantidadeContasPagas +
-                ", quantidadeContasPendentes=" + quantidadeContasPendentes;
+                ", quantidadeContasPendentes=" + quantidadeContasPendentes+"\n";
     }
 }

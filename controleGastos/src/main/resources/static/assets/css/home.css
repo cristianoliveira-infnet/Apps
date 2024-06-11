@@ -1,0 +1,12 @@
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+ul {
+    font-size: larger;
+}
+
+.main-img {
+    padding: 0 200px ;
+}

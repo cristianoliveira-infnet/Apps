@@ -1,1 +1,1 @@
-Conta de telefone;2024-04-02;2024-03-30;99.99;true;Conta de internet;
+Compras do mercado;06/08/2024;06/08/2024;299.99;false;Faltou comprar carne;

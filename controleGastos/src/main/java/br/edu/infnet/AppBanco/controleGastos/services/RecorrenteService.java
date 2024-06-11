@@ -1,6 +1,5 @@
 package br.edu.infnet.AppBanco.controleGastos.services;
 
-import br.edu.infnet.AppBanco.controleGastos.model.Avulso;
 import br.edu.infnet.AppBanco.controleGastos.model.Recorrente;
 
 import java.util.Collection;

@@ -31,7 +31,7 @@ public class RecorrenteLoader implements ApplicationRunner {
         while (linha != null) {
             campos = linha.split(";");
 
-            Recorrente contaTelefone = new Recorrente(campos[0], Double.valueOf(campos[3]), new Date(), new Date(), false, campos[5]);
+            Recorrente contaTelefone = new Recorrente(campos[0], Double.valueOf(campos[3]), new Date(campos[1]), new Date(campos[2]), false, campos[5]);
             System.out.println(contaTelefone);
 
             linha = leitura.readLine();

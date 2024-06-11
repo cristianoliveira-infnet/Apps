@@ -10,34 +10,37 @@
     <title>Conta Mensal</title>
 </head>
     <body>
-        <form method="post" action="/recorrente">
+        <form th:method="post" th:object="${recorrente}" modelAttribute="recorrente">
             <legend>Cadastro de Conta Mensal</legend>
+            <input type="hidden" th:value="id">
+
             <div class="mb-3">
                 <label for="inputTituloDaConta" class="form-label">Descrição</label>
-                <input type="text" class="form-control" id="inputTituloDaConta" aria-describedby="emailHelp" name="tituloDaConta">
+                <input type="text" class="form-control" id="inputTituloDaConta" aria-describedby="emailHelp" name="tituloDaConta" th:field="*{tituloDaConta}">
                 <div id="emailHelp" class="form-text"></div>
             </div>
             <div class="mb-3">
                 <label for="inputValor" class="form-label">Valor da conta</label>
-                <input type="number" class="form-control" id="inputValor" name="valorDaContaAvulsa">
+                <input type="number" class="form-control" id="inputValor" name="valorDaConta" th:field="*{valorDaConta}">
             </div>
             <div class="mb-3">
                 <label for="inputDataDoVencimento" class="form-label">Data do Vencimento</label>
-                <input type="text" class="form-control" id="inputDataDoVencimento" name="dataVencimento">
+                <input type="text" class="form-control" id="inputDataDoVencimento" name="dataVencimento" th:field="*{dataVencimento}">
             </div>
             <div class="mb-3">
                 <label for="inputDataDoPagamento" class="form-label">Data do Pagamento</label>
-                <input type="text" class="form-control" id="inputDataDoPagamento" name="dataPagamento">
+                <input type="text" class="form-control" id="inputDataDoPagamento" name="dataPagamento" th:field="*{dataPagamento}">
             </div>
             <div class="mb-3">
                 <label for="inputObservacao" class="form-label">Observação</label>
-                <input type="text" class="form-control" id="inputObservacao" name="observacao">
+                <input type="text" class="form-control" id="inputObservacao" name="observacao" th:field="*{observacao}">
             </div>
             <div class="mb-3 form-check">
-                <input type="text" class="form-check-input" id="checkEstaVencido" name="vencido">
-                <label class="form-check-label" for="checkEstaVencido">Está vencida?</label>
+                <label class="form-check-label" for="checkEstaVencido">Está vencido?</label>
+                <input type="checkbox" class="form-check-input" id="checkEstaVencido" name="vencido" th:value="${vencido}">
             </div>
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <button type="submit" class="btn btn-danger">Cancelar</button>
         </form>
     </body>
 </html>

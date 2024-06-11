@@ -1,6 +1,5 @@
 package br.edu.infnet.AppBanco.controleGastos.model;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Avulso extends Lancamento {
@@ -11,10 +10,11 @@ public class Avulso extends Lancamento {
     @Override
     public String toString() {
         return "Conta avulsa:" +
-                "Valor da Conta Avulsa=" + super.getValorDaConta() +
+                "Descrição da conta: " + super.getTituloDaConta()+
+                "\nValor da Conta Avulsa: R$"+ super.getValorDaConta() +
                 "\nData da Transação: "+ super.getDataVencimento()+
                 "\nData da Transação: "+ super.getDataPagamento()+
                 "\nEsta vencida: " +super.isVencido()+
-                "\nObservacao: " +super.getObservacao();
+                "\nObservacao: " +super.getObservacao()+"\n";
     }
 }
