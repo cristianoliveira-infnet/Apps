@@ -3,10 +3,15 @@ package br.edu.infnet.AppBanco.controleGastos.model;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
-
+@Entity
+@Table(name = "lancamentos")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Lancamento {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String tituloDaConta;
     @NonNull

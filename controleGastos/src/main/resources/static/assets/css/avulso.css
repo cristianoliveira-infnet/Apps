@@ -2,6 +2,7 @@ body {
     padding: 10px;
 }
 
-a {
-    
+.btn-cancel {
+    color: #FFF !important;
+    text-decoration: none !important;
 }

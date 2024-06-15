@@ -22,9 +22,10 @@ public class RecorrenteController {
 
     @PostMapping("/recorrente")
     public String create(Recorrente recorrente) {
-        Long id = recorrenteList.size() + 1L;
+        Integer id = recorrenteList.size()+1;
 
         recorrenteList.add(new Recorrente(
+                id,
                 recorrente.getTituloDaConta(),
                 recorrente.getValorDaConta(),
                 recorrente.getDataVencimento(),
@@ -32,13 +33,14 @@ public class RecorrenteController {
                 recorrente.getEstaVencido(),
                 recorrente.getObservacao()
         ));
+
         recorrenteList.forEach(System.out::println);
 
-        return "redirect:visao-geral";
+        return "redirect:/visao-geral";
     }
     @GetMapping("/visao-geral")
     public ModelAndView list() {
-        ModelAndView mv = new ModelAndView("list");
+        ModelAndView mv = new ModelAndView("visao-geral");
         mv.addObject("recorrenteList", recorrenteList);
         recorrenteList.forEach(System.out::println);
         System.out.println(mv);

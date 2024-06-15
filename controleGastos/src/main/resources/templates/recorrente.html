@@ -6,13 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/recorrente.css">
+    <link rel="stylesheet" th:href="@{assets/css/recorrente.css}">
     <title>Conta Mensal</title>
 </head>
     <body>
         <form th:method="post" th:object="${recorrente}" modelAttribute="recorrente">
             <legend>Cadastro de Conta Mensal</legend>
-            <input type="hidden" th:value="id">
 
             <div class="mb-3">
                 <label for="inputTituloDaConta" class="form-label">Descrição</label>
@@ -39,8 +38,16 @@
                 <label class="form-check-label" for="checkEstaVencido">Está vencido?</label>
                 <input type="checkbox" class="form-check-input" id="checkEstaVencido" name="vencido" th:value="${vencido}">
             </div>
-            <button type="submit" class="btn btn-success">Salvar</button>
-            <button type="submit" class="btn btn-danger">Cancelar</button>
+            <button type="submit" class="btn btn-success">
+
+                    Salvar
+
+            </button>
+            <button type="submit" class="btn btn-danger">
+                <a th:href="@{/}" class="btn-cancel">
+                    Cancelar
+                </a>
+            </button>
         </form>
     </body>
 </html>

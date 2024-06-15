@@ -24,14 +24,14 @@ public class RecorrenteLoader implements ApplicationRunner {
 
         String linha = leitura.readLine();
 
-        String[] campos = null;
+        String[] campos ;
 
         System.err.println("#recorrente");
 
         while (linha != null) {
             campos = linha.split(";");
 
-            Recorrente contaTelefone = new Recorrente(campos[0], Double.valueOf(campos[3]), new Date(campos[1]), new Date(campos[2]), false, campos[5]);
+            Recorrente contaTelefone = new Recorrente(Integer.parseInt(campos[0]), campos[1], Double.parseDouble(campos[2]), new Date(campos[3]), new Date(campos[4]), false, campos[6]);
             System.out.println(contaTelefone);
 
             linha = leitura.readLine();

@@ -7,6 +7,14 @@ ul {
     font-size: larger;
 }
 
+a {
+    color: #00b7b0 !important;
+}
+
+a:hover {
+    color: #381bcb !important;
+}
+
 .main-img {
     padding: 0 200px ;
 }
