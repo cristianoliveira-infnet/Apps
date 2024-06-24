@@ -1,21 +1,30 @@
 package br.edu.infnet.AppBanco.controleGastos.services;
 
-import br.edu.infnet.AppBanco.controleGastos.model.Recorrente;
+import br.edu.infnet.AppBanco.controleGastos.model.Despesa;
+import br.edu.infnet.AppBanco.controleGastos.repository.DespesaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RecorrenteService {
-    private static Map<Integer, Recorrente> mapa = new HashMap<Integer, Recorrente>();
-    private static Integer id = 0;
+    @Autowired
+    private DespesaRepository despesaRepository;
 
-    public void incluir(Recorrente recorrente){
-        recorrente.setId(++id);
-        mapa.put(recorrente.getId(), recorrente);
+    public void incluir(Despesa despesa){
+        despesaRepository.save(despesa);
     }
 
-    public Collection<Recorrente> obterLista(){
-        return mapa.values();
+    public Collection<Despesa> obterLista(){
+        return (Collection<Despesa>) despesaRepository.findAll();
     }
+
+    public Despesa obterPorId(Integer id) {
+        return despesaRepository.findById(id).orElse(null);
+    }
+
+    public void excluir(Integer id) {
+        despesaRepository.deleteById(id);
+    }
+
+
 }

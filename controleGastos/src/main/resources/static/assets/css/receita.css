@@ -2,6 +2,11 @@ body {
     padding: 10px;
 }
 
+.btn-save {
+    color: #FFF !important;
+    text-decoration: none !important;
+}
+
 .btn-cancel {
     color: #FFF !important;
     text-decoration: none !important;

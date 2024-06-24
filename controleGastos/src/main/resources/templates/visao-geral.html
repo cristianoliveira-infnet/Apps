@@ -21,24 +21,31 @@
         <th scope="col">Data do Pagamento</th>
         <th scope="col">Está vencida</th>
         <th scope="col">Observação</th>
+        <th scope="col">Recorrente</th>
         <th scope="col">Ações</th>
     </tr>
     </thead>
     <tbody>
-    <tr data-th-each="recorrenteList : ${recorrenteList}">
-        <th data-th-text="${recorrenteList.id}"></th>
-        <td data-th-text="${recorrenteList.tituloDaConta}"></td>
-        <td data-th-text="${recorrenteList.valorDaConta}"></td>
-        <td data-th-text="${{recorrenteList.dataVencimento}}"></td>
-        <td data-th-text="${{recorrenteList.dataPagamento}}"></td>
-        <td data-th-text="${recorrenteList.estaVencido}"></td>
-        <td data-th-text="${recorrenteList.observacao}"></td>
+    <tr data-th-each="despesa : ${despesaList}">
+        <th data-th-text="${despesa.id}"></th>
+        <td data-th-text="${despesa.tituloDaConta}"></td>
+        <td data-th-text="${despesa.valorDaConta}"></td>
+        <td data-th-text="${{despesa.dataVencimento}}"></td>
+        <td data-th-text="${{despesa.dataPagamento}}"></td>
+        <td data-th-text="${despesa.estaVencido}"></td>
+        <td data-th-text="${despesa.observacao}"></td>
+        <td data-th-text="${despesa.recorrente}"></td>
         <td>
-            <a th:href="@{'/edit/'+${recorrenteList.id}}">Editar</a>
+            <a th:href="@{'/edit/'+${despesa.id}}">Editar</a>
         </td>
     </tr>
+
     </tbody>
 </table>
-<a href="/create">Cadastro</a>
+<button type="button" class="btn btn-danger">
+    <a th:href="@{/}" class="btn-cancel">
+        Voltar
+    </a>
+</button>
 </body>
 </html>

@@ -13,19 +13,16 @@
     <section>
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" th:href="@{recorrente}">Conta Mensal</a>
+                    <a class="nav-link" aria-current="page" th:href="@{receitas}">Receitas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{avulso}">Conta Avulsa</a>
+                    <a class="nav-link" aria-current="page" th:href="@{despesa}">Despesas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Extrato</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" th:href="@{#}">Receitas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" th:href="@{visao-geral}">Visão Geral</a>
+                    <a class="nav-link" th:href="@{visao-geral}">Lançamentos</a>
                 </li>
             </ul>
             <img th:src="@{assets/img/orcamento-pessoal.png}" alt="Imagem principal" class="main-img rounded float-center">

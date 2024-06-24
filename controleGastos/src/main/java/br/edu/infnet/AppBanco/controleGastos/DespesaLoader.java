@@ -1,45 +1,53 @@
 package br.edu.infnet.AppBanco.controleGastos;
 
-import br.edu.infnet.AppBanco.controleGastos.model.Recorrente;
+import br.edu.infnet.AppBanco.controleGastos.model.Despesa;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Component
-public class RecorrenteLoader implements ApplicationRunner {
+public class DespesaLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        List<Recorrente> lista = new ArrayList<>();
+        List<Despesa> lista = new ArrayList<>();
 
-        FileReader file = new FileReader("recorrente.txt");
+        FileReader file = new FileReader("despesa.txt");
         BufferedReader leitura = new BufferedReader(file);
 
         String linha = leitura.readLine();
 
         String[] campos ;
 
-        System.err.println("#recorrente");
+        System.err.println("#despesa");
 
         while (linha != null) {
             campos = linha.split(";");
 
-            Recorrente contaTelefone = new Recorrente(Integer.parseInt(campos[0]), campos[1], Double.parseDouble(campos[2]), new Date(campos[3]), new Date(campos[4]), false, campos[6]);
+            Despesa contaTelefone = new Despesa(
+                    Integer.parseInt(campos[0]),
+                    campos[1],
+                    Double.parseDouble(campos[2]),
+                    new Date(campos[3]),
+                    new Date(campos[4]),
+                    Boolean.valueOf(campos[5]),
+                    campos[6],
+                    Boolean.valueOf(campos[7])
+            );
             System.out.println(contaTelefone);
 
             linha = leitura.readLine();
 
             lista.add(contaTelefone);
         }
-        for (Recorrente aluguel : lista) {
-            System.out.println(aluguel);
+        for (Despesa despesa : lista) {
+            System.out.println(despesa);
         }
 
         leitura.close();
