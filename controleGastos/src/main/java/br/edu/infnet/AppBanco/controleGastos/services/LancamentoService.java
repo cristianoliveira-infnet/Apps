@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 @Service
 public class LancamentoService {
-
     private LancamentoRepository lancamentoRepository;
     public void incluir(Lancamento lancamento){
         lancamentoRepository.save(lancamento);

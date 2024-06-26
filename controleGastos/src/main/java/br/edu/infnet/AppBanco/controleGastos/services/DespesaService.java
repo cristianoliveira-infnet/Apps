@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
 
-public class RecorrenteService {
+public class DespesaService {
     @Autowired
     private DespesaRepository despesaRepository;
-
     public void incluir(Despesa despesa){
         despesaRepository.save(despesa);
     }

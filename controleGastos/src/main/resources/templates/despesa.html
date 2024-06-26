@@ -16,24 +16,23 @@
 
             <div class="mb-3">
                 <label for="inputDescricao" class="form-label">Descrição</label>
-                <input type="text" class="form-control" id="inputDescricao" aria-describedby="emailHelp" name="descricao" th:field="*{descricao}">
-                <div id="emailHelp" class="form-text"></div>
+                <input type="text" class="form-control" id="inputDescricao" aria-describedby="emailHelp" name="descricao">
             </div>
             <div class="mb-3">
                 <label for="inputValor" class="form-label">Valor da conta</label>
-                <input type="number" class="form-control" id="inputValor" name="valor" th:field="*{valor}">
+                <input type="number" class="form-control" id="inputValor" name="valor">
             </div>
             <div class="mb-3">
                 <label for="inputDataDoVencimento" class="form-label">Data do Vencimento</label>
-                <input type="text" class="form-control" id="inputDataDoVencimento" name="dataVencimento" th:field="*{dataVencimento}">
+                <input type="text" class="form-control" id="inputDataDoVencimento" name="dataVencimento" >
             </div>
             <div class="mb-3">
                 <label for="inputDataDoPagamento" class="form-label">Data do Pagamento</label>
-                <input type="text" class="form-control" id="inputDataDoPagamento" name="dataPagamento" th:field="*{dataPagamento}">
+                <input type="text" class="form-control" id="inputDataDoPagamento" name="dataPagamento" >
             </div>
             <div class="mb-3">
                 <label for="inputObservacao" class="form-label">Observação</label>
-                <input type="text" class="form-control" id="inputObservacao" name="observacao" th:field="*{observacao}">
+                <input type="text" class="form-control" id="inputObservacao" name="observacao" >
             </div>
             <div class="input-group mb-3">
                 <select class="form-select" id="inputGroupSelect01">
@@ -42,9 +41,9 @@
                     <option value="3">Fixa mensal</option>
                 </select>
             </div>
-            <div class="mb-3 form-check">
-                <label class="form-check-label" for="checkEstaVencido">Está vencido?</label>
-                <input type="checkbox" class="form-check-input" id="checkEstaVencido" name="vencido" th:value="${vencido}">
+            <div class="form-check form-switch" >
+                <input class="form-check-input" th:type="checkbox" role="switch" id="switchCheckVencido"  name="vencido" th:checked="${vencido}">
+                <label class="form-check-label" for="switchCheckVencido">Vencido</label>
             </div>
             <button type="submit" class="btn btn-success">Salvar</button>
             <button type="submit" class="btn btn-danger">

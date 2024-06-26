@@ -6,13 +6,20 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Despesa extends Lancamento {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "recorrente")
     private Boolean recorrente;
-    public Despesa(Integer id, String descricao, Double valorDaConta, Date dataVencimento, Date dataPagamento, Boolean vencido, String observacao, Boolean recorrente) {
-        super(descricao, valorDaConta, dataVencimento, dataPagamento, vencido, observacao);
+    @Column(name = "vencido")
+    private Boolean vencido;
+    public Despesa(Integer id, String descricao, Double valor, Date dataVencimento, Date dataPagamento, Boolean vencido, String observacao, Boolean recorrente) {
+        super(descricao, valor, dataVencimento, dataPagamento, observacao);
         this.id = id;
+        if (vencido == null) {
+            vencido = false;
+        }
+        this.vencido = vencido;
         this.recorrente = recorrente;
     }
 
@@ -34,8 +41,16 @@ public class Despesa extends Lancamento {
         this.recorrente = recorrente;
     }
 
-    public String isRecorrente() {
-        if (recorrente) {
+    public Boolean getVencido() {
+        return vencido;
+    }
+
+    public void setVencido(Boolean vencido) {
+        this.vencido = vencido;
+    }
+
+    public String isVencido() {
+        if (vencido) {
             return "Sim";
         } else {
             return "Não";
@@ -52,6 +67,7 @@ public class Despesa extends Lancamento {
                 "\nData do Pagamento: "+ getDataPagamento() +
                 "\nEsta vencida: " +isVencido()+
                 "\nObservacao: " +getObservacao()+
-                "\nRecorrente: "+this.isRecorrente();
+                "\nRecorrente: "+this.getRecorrente();
+
     }
 }

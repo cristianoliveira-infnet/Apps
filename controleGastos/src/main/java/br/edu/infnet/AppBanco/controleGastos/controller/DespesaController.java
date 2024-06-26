@@ -14,14 +14,22 @@ import java.util.List;
 public class DespesaController {
     List<Despesa> despesaList = new ArrayList<>();
 
-    @GetMapping("/despesa")
-    public String home(Despesa despesa) {
-        System.out.println(despesaList.size());
+    @GetMapping("/despesas")
+    public ModelAndView listAll() {
+        ModelAndView mv = new ModelAndView("despesas");
+        mv.addObject("despesaList", despesaList);
+        despesaList.forEach(System.out::println);
+        System.out.println("Print Here: "+mv);
+        return mv;
+    }
+
+    @GetMapping("/create-despesa")
+    public String homeDespesa() {
         return "despesa";
     }
 
-    @PostMapping("/despesa")
-    public String create(Despesa despesa) {
+    @PostMapping("/create-despesa")
+    public String createDespesa(Despesa despesa) {
         Integer id = despesaList.size()+1;
 
         despesaList.add(new Despesa(
@@ -32,22 +40,13 @@ public class DespesaController {
                 despesa.getDataPagamento(),
                 despesa.getEstaVencido(),
                 despesa.getObservacao(),
-                despesa.getRecorrente()
+                false
         ));
 
         despesaList.forEach(System.out::println);
 
-        return "redirect:/visao-geral";
+        return "redirect:/despesas";
     }
-    @GetMapping("/visao-geral")
-    public ModelAndView listDespesa() {
-        ModelAndView mv = new ModelAndView("visao-geral");
-        mv.addObject("despesaList", despesaList);
-        despesaList.forEach(System.out::println);
-        System.out.println(mv);
-        return mv;
-    }
-
 
     @GetMapping("/edit/{id}")
     public void edit(@PathVariable("id") Long id) {

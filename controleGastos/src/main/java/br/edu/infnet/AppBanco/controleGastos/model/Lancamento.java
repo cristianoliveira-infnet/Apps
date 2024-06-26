@@ -11,6 +11,7 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Lancamento {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "descricao")
@@ -30,14 +31,13 @@ public abstract class Lancamento {
     @Column(name = "observacao")
     private String observacao;
 
-    public Lancamento(String descricao, Double valor, Date dataVencimento, Date dataPagamento, Boolean estaVencido, String observacao) {
+    public Lancamento(String descricao, Double valor, Date dataVencimento, Date dataPagamento, String observacao) {
         this.descricao = descricao;
         this.valor = valor;
         this.dataVencimento = dataVencimento;
         this.dataPagamento = dataPagamento;
         this.estaVencido = false;
         this.observacao = observacao;
-
     }
 
     public Lancamento(){}
@@ -93,10 +93,10 @@ public abstract class Lancamento {
 
     @Override
     public String toString() {
-        return "Lancamento" +
-                "Data do vencimento:" +  getDataVencimento()+
-                "Data do Pagamento: "+ getDataPagamento()+
-                ", observacao='" + observacao + '\'' +
-                ", vencido=" + estaVencido;
+        return "Lancamento:" +
+                "\nData do vencimento:" +  getDataVencimento()+
+                "\nData do Pagamento: "+ getDataPagamento()+
+                "\nOservacao='" + observacao +
+                "\nVencido=" + estaVencido;
     }
 }

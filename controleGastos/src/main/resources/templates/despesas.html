@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{assets/css/despesa.css}">
+    <title>Despesas</title>
+</head>
+<body>
+<h2>Lista de Despesas</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Data do Vencimento</th>
+        <th scope="col">Data do Pagamento</th>
+        <th scope="col">Vencida</th>
+        <th scope="col">Observação</th>
+        <th scope="col">Recorrente</th>
+        <th scope="col">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr data-th-each="despesa : ${despesaList}">
+            <th data-th-text="${despesa.id}"></th>
+            <td data-th-text="${despesa.descricao}"></td>
+            <td data-th-text="${despesa.valor}"></td>
+            <td data-th-text="${{despesa.dataVencimento}}"></td>
+            <td data-th-text="${{despesa.dataPagamento}}"></td>
+            <td data-th-text="${despesa.isVencido()}"></td>
+            <td data-th-text="${despesa.observacao}"></td>
+            <td data-th-text="${despesa.recorrente}"></td>
+            <td>
+                <a th:href="@{'/edit/'+${despesa.id}}">Editar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button type="button" class="btn btn-success">
+    <a th:href="@{/create-despesa}" class="btn-save">
+        Cadastrar
+    </a>
+</button>
+<button type="button" class="btn btn-danger">
+    <a th:href="@{/}" class="btn-cancel">
+        Voltar
+    </a>
+</button>
+</body>
+</html>
