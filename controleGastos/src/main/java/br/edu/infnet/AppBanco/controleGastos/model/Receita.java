@@ -8,7 +8,7 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Receita extends Lancamento {
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "efetivada")
     private Boolean efetivada;

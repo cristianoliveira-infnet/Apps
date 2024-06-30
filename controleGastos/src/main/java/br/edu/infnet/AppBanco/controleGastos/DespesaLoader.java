@@ -13,7 +13,6 @@ import java.util.List;
 
 @Component
 public class DespesaLoader implements ApplicationRunner {
-
     @Override
     public void run(ApplicationArguments args) throws Exception {
         List<Despesa> lista = new ArrayList<>();

@@ -9,11 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Controller
 public class DespesaController {
     List<Despesa> despesaList = new ArrayList<>();
-
     @GetMapping("/despesas")
     public ModelAndView listAll() {
         ModelAndView mv = new ModelAndView("despesas");
@@ -22,12 +20,10 @@ public class DespesaController {
         System.out.println("Print Here: "+mv);
         return mv;
     }
-
     @GetMapping("/create-despesa")
     public String homeDespesa() {
         return "despesa";
     }
-
     @PostMapping("/create-despesa")
     public String createDespesa(Despesa despesa) {
         Integer id = despesaList.size()+1;

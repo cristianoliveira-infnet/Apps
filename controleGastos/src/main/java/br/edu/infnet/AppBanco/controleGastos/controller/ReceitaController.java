@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Controller
 public class ReceitaController {
-
     List<Receita> receitaList = new ArrayList<>();
-
     @GetMapping("/receitas")
     public ModelAndView listAll(Receita receita) {
         ModelAndView mv = new ModelAndView("receitas");
@@ -21,7 +19,6 @@ public class ReceitaController {
         System.out.println(mv);
         return mv;
     }
-
     @GetMapping("/create-receita")
     public String createReceita() {
         return "receita";
