@@ -2,7 +2,6 @@ package br.edu.infnet.AppBanco.controleGastos;
 
 
 import br.edu.infnet.AppBanco.controleGastos.model.Cotacao;
-import br.edu.infnet.AppBanco.controleGastos.model.Receita;
 import br.edu.infnet.AppBanco.controleGastos.repository.ReceitaRepository;
 import br.edu.infnet.AppBanco.controleGastos.services.ConsumoApi;
 import br.edu.infnet.AppBanco.controleGastos.services.ConverterDados;
@@ -26,7 +25,7 @@ public class ControleGastosApplication implements CommandLineRunner {
 	public void run(String ...args) throws Exception {
 
 		var consumoApi = new ConsumoApi();
-		var json = consumoApi.obterDados("https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas?%24format=json");
+		var json = consumoApi.obterDados("https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL");
 		System.out.println(json);
 
 		ConverterDados converterDados = new ConverterDados();

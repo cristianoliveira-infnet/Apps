@@ -1,6 +1,9 @@
 package br.edu.infnet.AppBanco.controleGastos.controller;
 
 import br.edu.infnet.AppBanco.controleGastos.model.Despesa;
+import br.edu.infnet.AppBanco.controleGastos.repository.DespesaRepository;
+import br.edu.infnet.AppBanco.controleGastos.services.DespesaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,38 +11,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 @Controller
 public class DespesaController {
     List<Despesa> despesaList = new ArrayList<>();
+
+    @Autowired
+    DespesaService despesaService;
+
     @GetMapping("/despesas")
-    public ModelAndView listAll() {
-        ModelAndView mv = new ModelAndView("despesas");
-        mv.addObject("despesaList", despesaList);
-        despesaList.forEach(System.out::println);
-        System.out.println("Print Here: "+mv);
-        return mv;
+    public Collection<Despesa> obterLista() {
+        return despesaService.obterLista();
     }
     @GetMapping("/create-despesa")
     public String homeDespesa() {
-        return "despesa";
+        return "create-despesa";
     }
     @PostMapping("/create-despesa")
     public String createDespesa(Despesa despesa) {
-        Integer id = despesaList.size()+1;
-
-        despesaList.add(new Despesa(
-                id,
-                despesa.getDescricao(),
-                despesa.getValor(),
-                despesa.getDataVencimento(),
-                despesa.getDataPagamento(),
-                despesa.getEstaVencido(),
-                despesa.getObservacao(),
-                false
-        ));
-
-        despesaList.forEach(System.out::println);
+        despesaService.incluir(despesa);
 
         return "redirect:/despesas";
     }

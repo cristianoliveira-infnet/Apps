@@ -19,27 +19,23 @@
                 <input type="text" class="form-control" id="inputDescricao" aria-describedby="emailHelp" name="descricao">
             </div>
             <div class="mb-3">
-                <label for="inputValor" class="form-label">Valor da conta</label>
+                <label for="inputValor" class="form-label">Valor</label>
                 <input type="number" class="form-control" id="inputValor" name="valor">
             </div>
             <div class="mb-3">
                 <label for="inputDataDoVencimento" class="form-label">Data do Vencimento</label>
                 <input type="text" class="form-control" id="inputDataDoVencimento" name="dataVencimento" >
             </div>
-            <div class="mb-3">
-                <label for="inputDataDoPagamento" class="form-label">Data do Pagamento</label>
-                <input type="text" class="form-control" id="inputDataDoPagamento" name="dataPagamento" >
+            <div class="input-group mb-3">
+                <select class="form-select" id="selectRecorrente" name="recorrente">
+                    <option th:text="Fixo" th:value="FIXO"></option>
+                    <option th:text="Parcelado" th:value="PARCELAR_REPETIR"></option>
+                    <option th:text="Nao_Recorrente" th:value="NAO_RECORRENTE"></option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="inputObservacao" class="form-label">Observação</label>
                 <input type="text" class="form-control" id="inputObservacao" name="observacao" >
-            </div>
-            <div class="input-group mb-3">
-                <select class="form-select" id="inputGroupSelect01">
-                    <option value="1">Não recorrente</option>
-                    <option value="2">Parcelar ou repetir</option>
-                    <option value="3">Fixa mensal</option>
-                </select>
             </div>
             <div class="form-check form-switch" >
                 <input class="form-check-input" th:type="checkbox" role="switch" id="switchCheckVencido"  name="vencido" th:checked="${vencido}">

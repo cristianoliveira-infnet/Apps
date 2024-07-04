@@ -29,21 +29,21 @@ public class DespesaLoader implements ApplicationRunner {
         while (linha != null) {
             campos = linha.split(";");
 
-            Despesa contaTelefone = new Despesa(
-                    Integer.parseInt(campos[0]),
-                    campos[1],
-                    Double.parseDouble(campos[2]),
-                    new Date(campos[3]),
-                    new Date(campos[4]),
-                    Boolean.valueOf(campos[5]),
-                    campos[6],
-                    Boolean.valueOf(campos[7])
-            );
-            System.out.println(contaTelefone);
+//            Despesa contaTelefone = new Despesa(
+//                    Integer.parseInt(campos[0]),
+//                    campos[1],
+//                    Double.parseDouble(campos[2]),
+//                    new Date(campos[3]),
+//                    new Date(campos[4]),
+//                    Boolean.valueOf(campos[5]),
+//                    campos[6],
+//                    Boolean.valueOf(campos[7])
+//            );
+//            System.out.println(contaTelefone);
 
             linha = leitura.readLine();
 
-            lista.add(contaTelefone);
+//            lista.add(contaTelefone);
         }
         for (Despesa despesa : lista) {
             System.out.println(despesa);
