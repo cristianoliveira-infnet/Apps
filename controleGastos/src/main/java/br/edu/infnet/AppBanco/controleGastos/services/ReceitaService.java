@@ -27,4 +27,8 @@ public class ReceitaService {
     public Receita obeterPorId(Integer id) {
         return receitaRepository.findById(id).orElse(null);
     }
+
+    public void excluir(Integer id) {
+        receitaRepository.deleteById(id);
+    }
 }

@@ -8,12 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-@Controller
+@RestController
 public class DespesaController {
     List<Despesa> despesaList = new ArrayList<>();
 
@@ -35,10 +36,11 @@ public class DespesaController {
         return "redirect:/despesas";
     }
 
-    @GetMapping("/edit/{id}")
-    public void edit(@PathVariable("id") Long id) {
+    @GetMapping("/despesa/edit/{id}")
+    public Despesa obterPorId(@PathVariable("id") Integer id) {
         ModelAndView mv = new ModelAndView("despesa");
         despesaList.stream().filter(despesa -> id.equals(despesa.getId()));
+        return despesaService.obeterPorId(id);
     }
 
 }

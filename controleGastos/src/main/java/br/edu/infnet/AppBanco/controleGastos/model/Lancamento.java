@@ -2,7 +2,11 @@ package br.edu.infnet.AppBanco.controleGastos.model;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.NonNull;
 
 import java.util.Date;
 @Entity
@@ -13,19 +17,24 @@ public abstract class Lancamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+    @Size(min = 3, max = 20, message = "O campo descrição deve ter entre {min} e {max} caracteres.")
+    @NonNull
     @Column(name = "descricao")
     private String descricao;
     @Column(name = "valor")
+    @NotNull
+    @Size(min = 3, max = 10, message = "O campo valor deve ter entre {min} e {max} caracteres.")
     private Double valor;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull
     @Column(name = "dataVencimento")
     private Date dataVencimento;
     @Enumerated(EnumType.STRING)
     @Column(name = "recorrente")
     private Recorrente recorrente;
+    @NotEmpty
     @Column(name = "observacao")
     private String observacao;
-
     public Integer getId() {
         return id;
     }

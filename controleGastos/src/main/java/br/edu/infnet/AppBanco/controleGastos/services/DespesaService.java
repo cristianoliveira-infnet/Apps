@@ -27,4 +27,7 @@ public class DespesaService {
     }
 
 
+    public Despesa obeterPorId(Integer id) {
+       return despesaRepository.findById(id).orElse(null);
+    }
 }
