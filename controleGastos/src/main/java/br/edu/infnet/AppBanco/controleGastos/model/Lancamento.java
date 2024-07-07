@@ -1,10 +1,10 @@
 package br.edu.infnet.AppBanco.controleGastos.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
@@ -17,13 +17,11 @@ public abstract class Lancamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    @Size(min = 3, max = 20, message = "O campo descrição deve ter entre {min} e {max} caracteres.")
     @NonNull
     @Column(name = "descricao")
     private String descricao;
     @Column(name = "valor")
     @NotNull
-    @Size(min = 3, max = 10, message = "O campo valor deve ter entre {min} e {max} caracteres.")
     private Double valor;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @NotNull
@@ -35,6 +33,10 @@ public abstract class Lancamento {
     @NotEmpty
     @Column(name = "observacao")
     private String observacao;
+    @ManyToOne
+    @JoinColumn(name = "idExtrato")
+    @JsonBackReference
+    private Balanco balanco;
     public Integer getId() {
         return id;
     }

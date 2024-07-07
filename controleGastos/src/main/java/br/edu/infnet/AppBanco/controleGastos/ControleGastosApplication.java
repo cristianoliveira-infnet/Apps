@@ -1,6 +1,7 @@
 package br.edu.infnet.AppBanco.controleGastos;
 
 
+import br.edu.infnet.AppBanco.controleGastos.model.Balanco;
 import br.edu.infnet.AppBanco.controleGastos.model.Cotacao;
 import br.edu.infnet.AppBanco.controleGastos.repository.ReceitaRepository;
 import br.edu.infnet.AppBanco.controleGastos.services.ConsumoApi;
@@ -9,10 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-
-import java.util.Arrays;
-import java.util.Date;
 
 @SpringBootApplication
 public class ControleGastosApplication implements CommandLineRunner {
@@ -31,6 +28,8 @@ public class ControleGastosApplication implements CommandLineRunner {
 		ConverterDados converterDados = new ConverterDados();
 		Cotacao dados = converterDados.obterDados(json, Cotacao.class);
 		System.out.println(dados);
+
+		Balanco balanco = new Balanco();
 	}
 
 }

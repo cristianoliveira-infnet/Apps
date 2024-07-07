@@ -1,6 +1,6 @@
 package br.edu.infnet.AppBanco.controleGastos.model;
 import jakarta.persistence.*;
-import java.util.Date;
+
 @Entity
 @Table(name = "despesas")
 @Inheritance(strategy = InheritanceType.JOINED)

@@ -1,6 +1,6 @@
 package br.edu.infnet.AppBanco.controleGastos;
 
-import br.edu.infnet.AppBanco.controleGastos.model.Extrato;
+import br.edu.infnet.AppBanco.controleGastos.model.Balanco;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 
@@ -13,7 +13,7 @@ public class ExtratoLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        List<Extrato> lista = new ArrayList<>();
+        List<Balanco> lista = new ArrayList<>();
 
         FileReader file = new FileReader("extrato.txt");
         BufferedReader leitura = new BufferedReader(file);
@@ -27,11 +27,11 @@ public class ExtratoLoader implements ApplicationRunner {
         while (linha != null) {
             campos = linha.split(";");
 
-            Extrato extrato = new Extrato();
-            System.out.println(extrato);
+            Balanco balanco = new Balanco();
+            System.out.println(balanco);
             linha = leitura.readLine();
 
-            lista.add(extrato);
+            lista.add(balanco);
 
         }
 
