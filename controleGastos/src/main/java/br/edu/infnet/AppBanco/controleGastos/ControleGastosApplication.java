@@ -22,14 +22,12 @@ public class ControleGastosApplication implements CommandLineRunner {
 	public void run(String ...args) throws Exception {
 
 		var consumoApi = new ConsumoApi();
-		var json = consumoApi.obterDados("https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL");
+		var json = consumoApi.obterDados("https://v6.exchangerate-api.com/v6/b8e89b42d79e170de081774a/pair/USD/BRL");
 		System.out.println(json);
 
 		ConverterDados converterDados = new ConverterDados();
 		Cotacao dados = converterDados.obterDados(json, Cotacao.class);
 		System.out.println(dados);
-
-		Balanco balanco = new Balanco();
 	}
 
 }

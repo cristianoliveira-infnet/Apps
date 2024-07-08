@@ -20,6 +20,8 @@ public class Balanco {
     private Integer totalContasPagas;
     @Column(name = "totalReceita")
     private Double totalReceita;
+    @Column(name = "totalDespesa")
+    private Double totalDespesa;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "idLancamento")
@@ -37,6 +39,9 @@ public class Balanco {
     }
     public Date getDataDeEmissao() {
         return dataDeEmissao;
+    }
+    public Double getTotalDespesa() {
+        return totalDespesa;
     }
     public void setDataDeEmissao(Date dataDeEmissao) {
         this.dataDeEmissao = dataDeEmissao;
@@ -58,6 +63,9 @@ public class Balanco {
     }
     public void setLancamentos(List<Lancamento> lancamentos) {
         this.lancamentos = lancamentos;
+    }
+    public void setTotalDespesa(Double totalDespesa) {
+        this.totalDespesa = totalDespesa;
     }
     @Override
     public String toString() {

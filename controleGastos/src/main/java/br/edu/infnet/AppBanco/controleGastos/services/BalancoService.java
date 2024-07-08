@@ -9,12 +9,20 @@ import java.util.Collection;
 @Service
 public class BalancoService {
     @Autowired
-    private BalancoRepository extratoRepository;
+    private BalancoRepository balancoRepository;
     public Collection<Balanco> obterLista(){
-        return (Collection<Balanco>) extratoRepository.findAll();
+        return (Collection<Balanco>) balancoRepository.findAll();
     }
 
     public void incluir(Balanco balanco) {
-        extratoRepository.save(balanco);
+        balancoRepository.save(balanco);
+    }
+
+    public Balanco obterPorId(Integer id) {
+        return balancoRepository.findById(id).orElse(null);
+    }
+
+    public void excluir(Integer id) {
+        balancoRepository.deleteById(id);
     }
 }
